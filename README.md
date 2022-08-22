@@ -56,7 +56,89 @@ Repositorio do plugin do `Klaza` para o Moodle.
     - Se os arquivos do ~/.local/bin não estiverem no PATH, 
     
         ```bash
-        python ~/.local/bin/mdk create -v 400 -e mysqli -n moodle-400-klaza
+        python ~/.local/bin/mdk create -v 400 -e mariadb -n moodle-400-klaza
         ```
 
+- Adicionar os requisitos do PHP 7.4
 
+  ⚠️ **ATENÇÃO**: O Moodle 4.0.0 usa PHP 7.4 e o Apache 2.4. Podendo não funcionar corretamente com outras versões.
+  Tambem é necessário instalar e ativar as segintes extensões no `/etc/php7/php.ini` para o Moodle funcionar corretamente:
+
+  - curl
+  - iconv
+  - mysqli
+  - gd
+  - intl
+  - xmlrpc
+  - soap
+  - sodium
+  - exif
+  - mbstring
+  - openssl
+  - tokenizer
+  - ctype
+  - zip
+  - zlib
+  - simplexml
+  - spl
+  - pcre
+  - dom
+  - xml
+  - xmlreader
+  - json
+  - hash
+  - fileinfo
+  - memory_limit
+  - file_uploads
+
+  ⚠️ **ATENÇÃO**: lembre-se de sempre reiniciar o servidor apache após a instalação e modificação do Moodle e/ou PHP.
+
+- Adicionar o config.php
+
+  Depois de tudo é necessario adicionar o arquivo `config.php` no diretório raiz do Moodle (normalmente `/srv/http/www/moodle-400-klaza`, dependendo da pasta raiz se foi configurada no init do MDK).
+
+  ⚠️ **ATENÇÃO**: O sistema do Moodle pode criar a configuração sozinho pelo link `http://localhost/www/moodle-400-klaza/install.php`, mas problemas podem ocorrer. Caso isso ocorra, adicione o arquivo manualmente.
+
+  ```php
+  <?php  // Moodle configuration file
+
+  unset($CFG);
+  global $CFG;
+  $CFG = new stdClass();
+
+  $CFG->dbtype    = 'mariadb';
+  $CFG->dblibrary = 'native';
+  $CFG->dbhost    = 'SEU HOST DO BANCO DE DADOS (provavelmente localhost)';
+  $CFG->dbname    = 'NOME DO BANCO DE DADOS (provavelmente moodle400klaza)';
+  $CFG->dbuser    = 'USUARIO DO BANCO DE DADOS (provavelmente root)';
+  $CFG->dbpass    = 'SENHA DO BANCO DE DADOS (provavelmente root)';
+  $CFG->prefix    = 'mdl_';
+  $CFG->dboptions = array (
+    'dbpersist' => 0,
+    'dbport' => 3306,
+    'dbsocket' => '',
+    'dbcollation' => 'utf8mb4_unicode_ci',
+  );
+
+  $CFG->wwwroot   = 'http://localhost/www/moodle-400-klaza';
+  $CFG->dataroot  = '/srv/http/moodles/moodle-400-klaza/moodledata';
+  $CFG->admin     = 'admin';
+
+  $CFG->directorypermissions = 0777;
+
+  require_once(__DIR__ . '/lib/setup.php');
+
+  // There is no php closing tag in this file,
+  // it is intentional because it prevents trailing whitespace problems! 
+
+  ```
+
+- Entrar no Moodle:
+    
+  Entre no link `http://localhost/www/moodle-400-klaza/` ou `http://localhost/www/moodle-400-klaza/admin/index.php` para o Moodle fazer todas as configurações necessárias e criar o banco de dados.
+
+- Instalar o plugin:
+    
+  ```bash
+  sudo python dev/install.py
+  ```
