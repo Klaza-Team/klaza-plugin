@@ -24,3 +24,9 @@
 */
 
 $string['pluginname'] = 'Klaza';
+$string['desc'] = 'Klaza is a plugin for Moodle that allows you to create and customize notifications in multiple communications platforms.';
+$string['server_url'] = 'Server URL';
+$string['server_url_desc'] = 'The URL of the server where Klaza is installed.';
+$string['manage'] = 'Manage Klaza settings';
+$string['server_auth'] = 'Server authentication token';
+$string['server_auth_desc'] = 'The authentication token of the server where Klaza is installed. The default value is the MD5 hash of a random string and is generated every time the settings page is loaded (it is only an example, if you do not want to use a custom authentication system).';
