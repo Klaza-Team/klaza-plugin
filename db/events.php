@@ -29,60 +29,60 @@ $observers = array(
 
     array(
         'eventname'   => '\core\event\course_module_created',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
     array(
         'eventname'   => '\core\event\course_module_updated',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
     array(
         'eventname'   => '\core\event\course_module_deleted',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
     // array(
     //     'eventname'   => '\core\event\course_module_viewed',
-    //     'callback'    => '\local_klaza\event\course_events::request',
+    //     'callback'    => '\local_klaza\methods::send_event_request',
     // ),
 
 
 
     array(
         'eventname'   => '\mod_chat\event\message_sent',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 
 
     array(
         'eventname'   => '\assignsubmission_file\event\submission_updated',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
     array(
         'eventname'   => '\assignsubmission_onlinetext\event\assessable_uploaded',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 
     
     array(
         'eventname'   => '\mod_quiz\event\attempt_submitted',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 
 
     array(
         'eventname'   => '\core\event\comment_created',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
     array(
         'eventname'   => 'core\event\comment_deleted',
-        'callback'    => '\local_klaza\event\course_events::request',
+        'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 );

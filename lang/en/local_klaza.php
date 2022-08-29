@@ -30,3 +30,7 @@ $string['server_url_desc'] = 'The URL of the server where Klaza is installed.';
 $string['manage'] = 'Manage Klaza settings';
 $string['server_auth'] = 'Server authentication token';
 $string['server_auth_desc'] = 'The authentication token of the server where Klaza is installed. The default value is the MD5 hash of a random string and is generated every time the settings page is loaded (it is only an example, if you do not want to use a custom authentication system).';
+$string['alert_page_title'] = 'Klaza - Alerts';
+$string['alert_static'] = 'Aler creating form for course ';
+$string['alert_text'] = 'Alert text';
+$string['alert_button'] = 'Send alert to students';
