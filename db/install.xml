@@ -8,7 +8,7 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="text" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Notificação do professor para os alunos"/>
-        <FIELD NAME="curse_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso ao qual a notificação pertence"/>
+        <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso ao qual a notificação pertence"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
