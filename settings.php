@@ -1,5 +1,4 @@
 <?php
-
 // Plugin Klaza para Moodle - settings.php
 // Copyright (C) 2022 Klaza Team
 

@@ -34,8 +34,13 @@ function local_klaza_uninstall() {
     if ($category) {
       
         $DB->delete_records('user_info_field', array('shortname' => 'klaza_discord'));
+        $DB->delete_records('user_info_field', array('shortname' => 'klaza_discord_priority'));
+
         $DB->delete_records('user_info_field', array('shortname' => 'klaza_whatsapp'));
+        $DB->delete_records('user_info_field', array('shortname' => 'klaza_whatsapp_priority'));
+
         $DB->delete_records('user_info_field', array('shortname' => 'klaza_telegram'));
+        $DB->delete_records('user_info_field', array('shortname' => 'klaza_telegram_priority'));
 
         $DB->delete_records('user_info_category', array('name' => 'Klaza'));
 

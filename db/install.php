@@ -29,13 +29,29 @@ function xmldb_local_klaza_install() {
 
     global $DB;
 
+    $category = add_klaza_category($DB);
+
+    add_discord_fields($DB, $category);
+    add_whatsapp_fields($DB, $category);
+    add_telegram_fields($DB, $category);
+
+    return true;
+
+}
+
+function add_klaza_category($DB) {
+
     if (!$DB->get_record('user_info_category', array('name' => 'Klaza'))) {
        
         $DB->insert_record('user_info_category', array('name' => 'Klaza', 'sortorder' => 1));
 
     }
 
-    $category = $DB->get_record('user_info_category', array('name' => 'Klaza'));
+    return $DB->get_record('user_info_category', array('name' => 'Klaza'));
+
+}
+
+function add_discord_fields($DB, $category) {
 
     if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_discord', 'categoryid' => $category->id))) {
       
@@ -63,16 +79,46 @@ function xmldb_local_klaza_install() {
 
     }
 
+    if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_discord_priority', 'categoryid' => $category->id))) {
+      
+        $DB->insert_record('user_info_field', array(
+            'shortname'         => 'klaza_discord_priority',
+            'name'              => 'Prioridade do Discord',
+            'datatype'          => 'text',
+            'description'       => '<p dir="ltr" style="text-align: left;"> Número da prioridade do Discord nas notificações. Quanto maior o número, menor a prioridade. -1 significa que o Klaza não deve notificar pelo Discord. </p>',
+            'descriptionformat' => 1,
+            'categoryid'        => $category->id,
+            'sortorder'         => 2,
+            'required'          => 0,
+            'locked'            => 0,
+            'visible'           => 2,
+            'forceunique'       => 0,
+            'signup'            => 0,
+            'defaultdata'       => '0',
+            'defaultdataformat' => 0,
+            'param1'            => 10,
+            'param2'            => 10,
+            'param3'            => 0,
+            'param4'            => '',
+            'param5'            => ''
+        ));
+
+    }
+
+}
+
+function add_whatsapp_fields($DB, $category) {
+
     if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_whatsapp', 'categoryid' => $category->id))) {
 
         $DB->insert_record('user_info_field', array(
             'shortname'         => 'klaza_whatsapp',
-            'name'              => 'Numero do Whatsapp',
+            'name'              => 'Número do Whatsapp',
             'datatype'          => 'text',
-            'description'       => '<p dir="ltr" style="text-align: left;"> Seu numero do Whatsapp </p>',
+            'description'       => '<p dir="ltr" style="text-align: left;"> Seu número do Whatsapp </p>',
             'descriptionformat' => 1,
             'categoryid'        => $category->id,
-            'sortorder'         => 1,
+            'sortorder'         => 3,
             'required'          => 0,
             'locked'            => 0,
             'visible'           => 2,
@@ -88,17 +134,47 @@ function xmldb_local_klaza_install() {
         ));
 
     }
+
+    if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_whatsapp_priority', 'categoryid' => $category->id))) {
+      
+        $DB->insert_record('user_info_field', array(
+            'shortname'         => 'klaza_whatsapp_priority',
+            'name'              => 'Prioridade do Whatsapp',
+            'datatype'          => 'text',
+            'description'       => '<p dir="ltr" style="text-align: left;"> Número da prioridade do Whatsapp nas notificações. Quanto maior o número, menor a prioridade. -1 significa que o Klaza não deve notificar pelo Whatsapp. </p>',
+            'descriptionformat' => 1,
+            'categoryid'        => $category->id,
+            'sortorder'         => 4,
+            'required'          => 0,
+            'locked'            => 0,
+            'visible'           => 2,
+            'forceunique'       => 0,
+            'signup'            => 0,
+            'defaultdata'       => '0',
+            'defaultdataformat' => 0,
+            'param1'            => 10,
+            'param2'            => 10,
+            'param3'            => 0,
+            'param4'            => '',
+            'param5'            => ''
+        ));
+
+    }
+
+}
+
+function add_telegram_fields($DB, $category) {
 
     if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_telegram', 'categoryid' => $category->id))) {
 
         $DB->insert_record('user_info_field', array(
             'shortname'         => 'klaza_telegram',
-            'name'              => 'Numero do Telegram',
+            'name'              => 'Número do Telegram',
             'datatype'          => 'text',
-            'description'       => '<p dir="ltr" style="text-align: left;"> Seu numero do Telegram </p>',
+            'description'       => '<p dir="ltr" style="text-align: left;"> Seu número do Telegram </p>',
             'descriptionformat' => 1,
             'categoryid'        => $category->id,
-            'sortorder'         => 1,
+            'sortorder'         => 5,
             'required'          => 0,
             'locked'            => 0,
             'visible'           => 2,
@@ -115,6 +191,30 @@ function xmldb_local_klaza_install() {
 
     }
 
-    return true;
+    if (!$DB->get_record('user_info_field', array('shortname' => 'klaza_telegram_priority', 'categoryid' => $category->id))) {
+      
+        $DB->insert_record('user_info_field', array(
+            'shortname'         => 'klaza_telegram_priority',
+            'name'              => 'Prioridade do Telegram',
+            'datatype'          => 'text',
+            'description'       => '<p dir="ltr" style="text-align: left;"> Número da prioridade do Telegram nas notificações. Quanto maior o número, menor a prioridade. -1 significa que o Klaza não deve notificar pelo Telegram. </p>',
+            'descriptionformat' => 1,
+            'categoryid'        => $category->id,
+            'sortorder'         => 6,
+            'required'          => 0,
+            'locked'            => 0,
+            'visible'           => 2,
+            'forceunique'       => 0,
+            'signup'            => 0,
+            'defaultdata'       => '0',
+            'defaultdataformat' => 0,
+            'param1'            => 10,
+            'param2'            => 10,
+            'param3'            => 0,
+            'param4'            => '',
+            'param5'            => ''
+        ));
+
+    }
 
 }
