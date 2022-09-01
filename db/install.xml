@@ -17,8 +17,8 @@
     <TABLE NAME="klaza_discord_instance" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="guild" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="ID do guild da instancia do Discord"/>
-        <FIELD NAME="channel" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="ID do canal da instancia do Discord"/>
+        <FIELD NAME="guild" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do guild da instancia do Discord"/>
+        <FIELD NAME="channel" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do canal da instancia do Discord"/>
         <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso da instancia do Discord"/>
       </FIELDS>
       <KEYS>
@@ -28,9 +28,9 @@
     <TABLE NAME="klaza_telegram_instance" COMMENT="Tabela para instancias do Telegram">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="guild" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="ID do server do Telegram da instancia"/>
-        <FIELD NAME="channel" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="ID do canal da instancia do Telegram"/>
-        <FIELD NAME="course_id" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso da instancia do Telegram"/>
+        <FIELD NAME="guild" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do server do Telegram da instancia"/>
+        <FIELD NAME="channel" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do canal da instancia do Telegram"/>
+        <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso da instancia do Telegram"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -41,7 +41,7 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso da instancia de usuário"/>
         <FIELD NAME="klaza_user_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuário do Klaza"/>
-        <FIELD NAME="type" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Tipo da instancia de usuário (&quot;DISCORD, TELEGRAM, WHATSAPP&quot;)"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Tipo da instancia de usuário (&quot;DISCORD, TELEGRAM, WHATSAPP&quot;)"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
