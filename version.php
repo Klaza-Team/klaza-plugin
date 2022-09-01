@@ -25,9 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 102;
+$plugin->version = 103;
 $plugin->component = 'local_klaza';
-$plugin->release = '1.0.2';
+$plugin->release = '1.0.3';
 $plugin->maturity = MATURITY_STABLE;
 
 ?>
