@@ -55,7 +55,7 @@ class methods {
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'KlazaKey: ' . get_config('local_klaza')->server_auth));
 
         $response = curl_exec($curl);
         curl_close($curl);
