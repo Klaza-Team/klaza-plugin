@@ -1,3 +1,8 @@
+# v 1.0.5
+
+- Adicionado `eventname` (`VARCHAR(100)`) na tabela `klaza_quiz_notification` para permitir que o sistema envie notificações para eventos específicos.
+- Adicionado `eventname` (`VARCHAR(100)`) na tabela `klaza_assign_notification` para permitir que o sistema envie notificações para eventos específicos.
+  
 # v 1.0.4
 
 - Adicionado o arquivo `CHANGES.md` para documentar as mudanças feitas no plugin.
