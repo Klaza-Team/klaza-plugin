@@ -51,6 +51,7 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="quiz_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do quiz da notificação"/>
+        <FIELD NAME="eventname" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Nome do evento que deve ser notificado"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -60,6 +61,7 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="assign_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID da atividade da notificação"/>
+        <FIELD NAME="eventname" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Nome do evento que deve ser notificado"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
