@@ -1,3 +1,10 @@
+
+# v 1.0.6
+
+- Removido `guild` da tabela `klaza_telegram_instance` pois não é mais necessário.
+- Adicionado o arquivo `.gitignore` para ignorar arquivos temporários.
+- Adicionado o arquivo `db/upgrade.php` para atualizar o banco de dados em cada versão (não é mais necessario apagar tudo e reinstalar).
+
 # v 1.0.5
 
 - Adicionado `eventname` (`VARCHAR(100)`) na tabela `klaza_quiz_notification` para permitir que o sistema envie notificações para eventos específicos.

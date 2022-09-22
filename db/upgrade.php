@@ -1,5 +1,5 @@
 <?php
-// Plugin Klaza para Moodle - version.php
+// Plugin Klaza para Moodle - update.php
 // Copyright (C) 2022 Klaza Team
 
 // This program is free software: you can redistribute it and/or modify
@@ -16,18 +16,34 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version metadata for the local_klaza plugin.
- *
+ * Install script for the local_klaza plugin.
+ * 
  * @package   local_klaza
  * @copyright 2022, Klaza Team
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
-defined('MOODLE_INTERNAL') || die();
+function xmldb_local_klaza_upgrade($oldversion): bool {
 
-$plugin->version = 106;
-$plugin->component = 'local_klaza';
-$plugin->release = '1.0.6';
-$plugin->maturity = MATURITY_STABLE;
+    global $CFG, $DB;
 
-?>
+    $dbman = $DB->get_manager(); // Loads ddl manager and xmldb classes.
+
+    \local_klaza\methods::console_log($oldversion);
+
+    if ($oldversion < 106) {
+        
+        $table = new xmldb_table('klaza_telegram_instance');
+        $field = new xmldb_field('guild');
+
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+
+        upgrade_plugin_savepoint(true, 106, 'local', 'klaza');
+
+    }
+
+    // Everything has succeeded to here. Return true.
+    return true;
+}
