@@ -28,7 +28,6 @@
     <TABLE NAME="klaza_telegram_instance" COMMENT="Tabela para instancias do Telegram">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="guild" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do server do Telegram da instancia"/>
         <FIELD NAME="channel" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="ID do canal da instancia do Telegram"/>
         <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso da instancia do Telegram"/>
       </FIELDS>
