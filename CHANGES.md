@@ -1,3 +1,6 @@
+# v 1.0.7
+
+- Arrumado e comentado o `db/events.php` para funcionar com os eventos que estavam falhando e/ou com erro.
 
 # v 1.0.6
 
