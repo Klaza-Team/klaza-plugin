@@ -27,16 +27,19 @@ defined('MOODLE_INTERNAL') || die();
 
 $observers = array(
 
+    // COURSE MODULE CREATED EVENT
     array(
         'eventname'   => '\core\event\course_module_created',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
+    // COURSE MODULE UPDATED EVENT
     array(
         'eventname'   => '\core\event\course_module_updated',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
+    // COURSE MODULE DELETED EVENT
     array(
         'eventname'   => '\core\event\course_module_deleted',
         'callback'    => '\local_klaza\methods::send_event_request',
@@ -48,38 +51,34 @@ $observers = array(
     // ),
 
 
-
+    // CHAT MESSAGE EVENTS
     array(
-        'eventname'   => '\mod_chat\event\message_sent',
+        'eventname'   => '\core\event\message_sent',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 
-
+    // ASSIGN EVENTS
     array(
         'eventname'   => '\assignsubmission_file\event\submission_updated',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
-    array(
-        'eventname'   => '\assignsubmission_onlinetext\event\assessable_uploaded',
-        'callback'    => '\local_klaza\methods::send_event_request',
-    ),
 
-
-    
+    // QUIZ EVENTS
     array(
         'eventname'   => '\mod_quiz\event\attempt_submitted',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
 
-
+    // ASSIGN COMMENT CREATED EVENT
     array(
         'eventname'   => '\core\event\comment_created',
         'callback'    => '\local_klaza\methods::send_event_request',
     ),
 
+    // ASSIGN COMMENT DELETED EVENT
     array(
         'eventname'   => 'core\event\comment_deleted',
         'callback'    => '\local_klaza\methods::send_event_request',
