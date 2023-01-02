@@ -31,6 +31,181 @@ function xmldb_local_klaza_upgrade($oldversion): bool {
 
     \local_klaza\methods::console_log($oldversion);
 
+    if ($oldversion < 108) {
+
+        // ADD klaza_user_config
+
+        $table_klaza_user_config = new xmldb_table('klaza_user_config');
+
+        $table_klaza_user_config->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_user_config->add_field('user_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_config->add_field('name', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_config->add_field('value', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_config->add_field('type', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_user_config->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_user_config)) {
+            $dbman->create_table($table_klaza_user_config);
+        }
+       
+        // ADD klaza_user_instance_config
+
+        $table_klaza_user_instance_config = new xmldb_table('klaza_user_inst_conf');
+
+        $table_klaza_user_instance_config->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_user_instance_config->add_field('user_instance_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('use_global', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_create_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_edit_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_delete_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_deadline_2_days', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_deadline_1_day', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_deadline', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_send_assignment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_receive_message', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_receive_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_user_instance_config->add_field('notify_delete_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_user_instance_config->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_user_instance_config)) {
+            $dbman->create_table($table_klaza_user_instance_config);
+        }
+
+        // ADD klaza_discord_instance_config
+
+        $table_klaza_discord_instance_config = new xmldb_table('klaza_disc_inst_conf');
+
+        $table_klaza_discord_instance_config->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_discord_instance_config->add_field('discord_instance_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('use_global', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_create_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_edit_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_delete_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_deadline_2_days', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_deadline_1_day', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_deadline', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_send_assignment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_receive_message', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_receive_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_instance_config->add_field('notify_delete_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_discord_instance_config->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_discord_instance_config)) {
+            $dbman->create_table($table_klaza_discord_instance_config);
+        }
+
+        // ADD klaza_telegram_instance_config
+
+        $table_klaza_telegram_instance_config = new xmldb_table('klaza_tele_inst_conf');
+
+        $table_klaza_telegram_instance_config->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_telegram_instance_config->add_field('telegram_instance_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('use_global', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_create_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_edit_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_delete_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_deadline_2_days', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_deadline_1_day', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_deadline', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_send_assignment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_receive_message', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_receive_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_instance_config->add_field('notify_delete_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_telegram_instance_config->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_telegram_instance_config)) {
+            $dbman->create_table($table_klaza_telegram_instance_config);
+        }
+
+        // ADD klaza_global_config
+
+        $table_klaza_global_config = new xmldb_table('klaza_global_config');
+
+        $table_klaza_global_config->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_global_config->add_field('user_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('use_global', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_create_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_edit_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_delete_content', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_deadline_2_days', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_deadline_1_day', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_deadline', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_send_assignment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_receive_message', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_receive_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_global_config->add_field('notify_delete_comment', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_global_config->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_global_config)) {
+            $dbman->create_table($table_klaza_global_config);
+        }
+
+        // ADD klaza_discord_accounts
+
+        $table_klaza_discord_accounts = new xmldb_table('klaza_disc_accounts');
+
+        $table_klaza_discord_accounts->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_discord_accounts->add_field('user_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_accounts->add_field('value', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_discord_accounts->add_field('priority', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_discord_accounts->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_discord_accounts)) {
+            $dbman->create_table($table_klaza_discord_accounts);
+        }
+
+        // ADD klaza_telegram_accounts
+
+        $table_klaza_telegram_accounts = new xmldb_table('klaza_tele_accounts');
+
+        $table_klaza_telegram_accounts->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_telegram_accounts->add_field('user_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_accounts->add_field('value', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_telegram_accounts->add_field('priority', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_telegram_accounts->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_telegram_accounts)) {
+            $dbman->create_table($table_klaza_telegram_accounts);
+        }
+
+        // ADD klaza_whatsapp_accounts
+
+        $table_klaza_whatsapp_accounts = new xmldb_table('klaza_whats_accounts');
+
+        $table_klaza_whatsapp_accounts->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
+        $table_klaza_whatsapp_accounts->add_field('user_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_whatsapp_accounts->add_field('value', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, null);
+        $table_klaza_whatsapp_accounts->add_field('priority', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, null);
+
+        $table_klaza_whatsapp_accounts->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        if (!$dbman->table_exists($table_klaza_whatsapp_accounts)) {
+            $dbman->create_table($table_klaza_whatsapp_accounts);
+        }
+
+        // CHANGE klaza_discord_instance
+
+        $table_klaza_discord_instance = new xmldb_table('klaza_discord_instance');
+
+        $dbman->add_field($table_klaza_discord_instance, new xmldb_field('creator_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0));
+
+        // CHANGE klaza_telegram_instance
+
+        $table_klaza_telegram_instance = new xmldb_table('klaza_telegram_instance');
+
+        $dbman->add_field($table_klaza_telegram_instance, new xmldb_field('creator_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0));
+
+        upgrade_plugin_savepoint(true, 108, 'local', 'klaza');
+
+    }
+
     if ($oldversion < 106) {
         
         $table = new xmldb_table('klaza_telegram_instance');

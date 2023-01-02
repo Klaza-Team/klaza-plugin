@@ -1,3 +1,16 @@
+# v 1.0.8
+
+- Adcionada a tabela `klaza_user_config` para armazenar configs do usuario.
+- Adicionada a tabela `klaza_user_inst_conf` para armazenar as configurações da instancia do usuario.
+- Adicionada a tabela `klaza_disc_inst_conf` para armazenar as configurações das instancias do discord.
+- Adicionada a tabela `klaza_tele_inst_conf` para armazenar as configurações das instancias do telegram.
+- Adicionada a tabela `klaza_disc_accounts` para armazenar as contas do discord.
+- Adicionada a tabela `klaza_tele_accounts` para armazenar as contas do telegram.
+- Adicionada a tabela `klaza_whats_accounts` para armazenar as contas do whatsapp.
+- Adicionada a table `klaza_global_config` para armazenar as configurações globais.
+- Adicionado `creator_id` na tabela `klaza_discord_instance` para armazenar o id do usuario que criou a instancia.
+- Adicionado `creator_id` na tabela `klaza_telegram_instance` para armazenar o id do usuario que criou a instancia.
+
 # v 1.0.7
 
 - Arrumado e comentado o `db/events.php` para funcionar com os eventos que estavam falhando e/ou com erro.
