@@ -1,6 +1,10 @@
+# v 1.0.9
+
+- Adicionado `creator_id` na tabela `klaza_alert` para armazenar o id do usuario que criou o alerta.
+
 # v 1.0.8
 
-- Adcionada a tabela `klaza_user_config` para armazenar configs do usuario.
+- Adicionada a tabela `klaza_user_config` para armazenar configs do usuario.
 - Adicionada a tabela `klaza_user_inst_conf` para armazenar as configurações da instancia do usuario.
 - Adicionada a tabela `klaza_disc_inst_conf` para armazenar as configurações das instancias do discord.
 - Adicionada a tabela `klaza_tele_inst_conf` para armazenar as configurações das instancias do telegram.

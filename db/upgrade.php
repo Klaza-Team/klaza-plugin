@@ -31,6 +31,19 @@ function xmldb_local_klaza_upgrade($oldversion): bool {
 
     \local_klaza\methods::console_log($oldversion);
 
+    if ($oldversion < 109) {
+
+        // CHANGE klaza_alert
+
+        $table_klaza_alert = new xmldb_table('klaza_alert');
+        $field_creator_id = new xmldb_field('creator_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+
+        if (!$dbman->field_exists($table_klaza_alert, $field_creator_id)) {
+            $dbman->add_field($table_klaza_alert, $field_creator_id);        
+        }
+
+    }
+
     if ($oldversion < 108) {
 
         // ADD klaza_user_config
