@@ -9,7 +9,7 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="text" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Notificação do professor para os alunos"/>
         <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do curso ao qual a notificação pertence"/>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do criador do alerta"/>
+        <FIELD NAME="creator_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do criador do alerta"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -69,7 +69,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_user_instance_config" COMMENT="Tabela de configuração dos usuarios"> 
+    <TABLE NAME="klaza_user_inst_conf" COMMENT="Tabela de configuração dos usuarios"> 
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="user_instance_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID da instancia do usuario"/>
@@ -89,7 +89,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_discord_instance_config" COMMENT="Tabela de configuração de instancia do discord ">
+    <TABLE NAME="klaza_disc_inst_conf" COMMENT="Tabela de configuração de instancia do discord ">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="discord_instance_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID da instancia"/>
@@ -109,7 +109,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_telegram_instance_config" COMMENT="Tabela de configuração de instancia do telegram">
+    <TABLE NAME="klaza_tele_inst_conf" COMMENT="Tabela de configuração de instancia do telegram">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="telegram_instance_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID da instancia"/>
@@ -141,7 +141,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_discord_accounts" COMMENT="Tabela de contas do discord">
+    <TABLE NAME="klaza_disc_accounts" COMMENT="Tabela de contas do discord">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuario"/>
@@ -152,7 +152,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_telegram_accounts" COMMENT="Tabela de contas do telegram">
+    <TABLE NAME="klaza_tele_accounts" COMMENT="Tabela de contas do telegram">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuario"/>
@@ -163,7 +163,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="klaza_whatsapp_accounts" COMMENT="Tabela de contas do whatsapp">
+    <TABLE NAME="klaza_whats_accounts" COMMENT="Tabela de contas do whatsapp">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuario"/>
