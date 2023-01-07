@@ -1,3 +1,8 @@
+# v 1.0.10
+
+- Removido `db/install.php` pois não é mais necessário.
+- Modificado formato de versão numerica no `version.php` para `XYYZZ` (ex: 10010).
+
 # v 1.0.9
 
 - Adicionado `creator_id` na tabela `klaza_alert` para armazenar o id do usuario que criou o alerta.
