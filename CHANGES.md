@@ -1,3 +1,7 @@
+# v 1.0.11
+
+- Removido `type` da tabela `klaza_user_instance`
+
 # v 1.0.10
 
 - Removido `db/install.php` pois não é mais necessário.
