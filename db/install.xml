@@ -177,7 +177,6 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID do usuario"/>
-        <FIELD NAME="use_global" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" COMMENT="1 - TRUE, 0 - FALSE"/>
         <FIELD NAME="notify_create_content" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" COMMENT="1 - TRUE, 0 - FALSE"/>
         <FIELD NAME="notify_edit_content" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" COMMENT="1 - TRUE, 0 - FALSE"/>
         <FIELD NAME="notify_delete_content" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" COMMENT="1 - TRUE, 0 - FALSE"/>

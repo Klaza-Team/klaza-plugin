@@ -1,3 +1,7 @@
+# v 1.0.12
+
+- Removido `use_global` da tabela `klaza_global_config`
+
 # v 1.0.11
 
 - Removido `type` da tabela `klaza_user_instance`
