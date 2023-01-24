@@ -31,6 +31,19 @@ function xmldb_local_klaza_upgrade($oldversion): bool {
 
     \local_klaza\methods::console_log($oldversion);
 
+    if ($oldversion < 10012) {
+
+        $table = new xmldb_table('klaza_global_config');
+        $field = new xmldb_field('use_global');
+
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+
+        upgrade_plugin_savepoint(true, 10012, 'local', 'klaza');
+
+    }
+
     if ($oldversion < 109) {
 
         // CHANGE klaza_alert
